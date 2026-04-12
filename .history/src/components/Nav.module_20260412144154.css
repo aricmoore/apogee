@@ -1,0 +1,33 @@
+.header {
+  position: sticky;
+  top: 0;
+  background: var(--white);
+  z-index: 100;
+  padding: var(--space-4) 0;
+}
+
+.nav {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.wordmark {
+  font-family: var(--font-serif);
+  font-size: var(--text-2xl);
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+
+.links {
+  display: flex;
+  gap: var(--space-8);
+}
+
+.links a {
+  transition: color 0.15s;
+}
+
+.links a:hover {
+  color: var(--accent);
+}
