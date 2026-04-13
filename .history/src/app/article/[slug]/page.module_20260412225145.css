@@ -55,10 +55,7 @@
   transition: color 0.15s;
 }
 
-.crumb:hover,
-a.crumb:hover {
-  color: var(--amber);
-}
+.crumb:hover { color: var(--amber); }
 
 .crumbSep {
   font-family: var(--font-mono);

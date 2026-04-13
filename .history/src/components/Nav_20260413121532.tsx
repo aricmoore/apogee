@@ -35,11 +35,6 @@ export default function Nav() {
     }
   }
 
-  const isActive = (href: string) => {
-    if (href === '/') return pathname === '/' || pathname.startsWith('/article')
-    return pathname === href
-  }
-
   return (
     <header className={styles.header}>
       <div className={styles.inner}>
@@ -60,13 +55,7 @@ export default function Nav() {
                 className={styles.searchInput}
                 aria-label="Search"
               />
-              <button
-                type="button"
-                className={styles.searchClose}
-                onClick={() => { setSearchOpen(false); setQuery('') }}
-              >
-                ✕
-              </button>
+              <button type="button" className={styles.searchClose} onClick={() => { setSearchOpen(false); setQuery('') }}>✕</button>
             </form>
           ) : (
             <button
@@ -87,7 +76,11 @@ export default function Nav() {
             <Link
               key={l.label}
               href={l.href}
-              className={`${styles.link} ${isActive(l.href) ? styles.linkActive : ''}`}
+              className={`${styles.link} ${
+								l.href === '/'
+									? pathname === '/' || pathname.startsWith('/article')
+									: pathname === l.href
+								? styles.linkActive : ''}`}
             >
               {l.label}
             </Link>
@@ -114,17 +107,13 @@ export default function Nav() {
               <Link
                 key={l.label}
                 href={l.href}
-                className={`${styles.overlayLink} ${isActive(l.href) ? styles.overlayLinkActive : ''}`}
+                className={`${styles.overlayLink} ${pathname === l.href ? styles.overlayLinkActive : ''}`}
                 onClick={() => setMenuOpen(false)}
               >
                 {l.label}
               </Link>
             ))}
-            <Link
-              href="/studio"
-              className={styles.overlayLink}
-              onClick={() => setMenuOpen(false)}
-            >
+            <Link href="/studio" className={styles.overlayLink} onClick={() => setMenuOpen(false)}>
               Studio ↗
             </Link>
           </nav>
