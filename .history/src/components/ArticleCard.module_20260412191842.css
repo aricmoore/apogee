@@ -1,0 +1,129 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border-top: 2px solid var(--black);
+  padding-top: var(--space-3);
+  gap: var(--space-2);
+}
+
+.featured {
+  border-top: none;
+  padding-top: 0;
+  background: var(--white);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-10);
+  align-items: start;
+}
+
+.imageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3/2;
+  overflow: hidden;
+  background: var(--faint);
+  display: block;
+  flex-shrink: 0;
+}
+
+.featured .imageWrap {
+  aspect-ratio: 4/3;
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 0.6s var(--ease);
+}
+
+.imageWrap:hover .image {
+  transform: scale(1.03);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  background: var(--white);
+}
+
+.featured .body {
+  justify-content: center;
+  padding: var(--space-2) 0;
+  gap: var(--space-3);
+}
+
+.category {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: var(--text-lg);
+  font-weight: 400;
+  line-height: var(--leading-snug);
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  transition: color 0.15s;
+}
+
+.title:hover { color: var(--orange); }
+
+.featured .title {
+  font-size: var(--text-4xl);
+  line-height: var(--leading-tight);
+  letter-spacing: -0.02em;
+  color: var(--black);
+}
+
+.excerpt {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-1);
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--faint);
+}
+
+.author {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+}
+
+.dot { color: var(--stone); font-size: 0.7rem; }
+
+.readMore {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-top: var(--space-2);
+  transition: gap 0.2s;
+}
+
+.readMore:hover { gap: var(--space-3); }
+
+@media (max-width: 768px) {
+  .featured { grid-template-columns: 1fr; }
+  .featured .title { font-size: var(--text-3xl); }
+}

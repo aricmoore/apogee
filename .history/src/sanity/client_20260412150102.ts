@@ -1,0 +1,13 @@
+import { createClient } from 'next-sanity'
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const imageUrlBuilder = require('@sanity/image-url').default
+
+export const client = createClient({
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
+  apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION!,
+  useCdn: true,
+})
+
+const builder = imageUrlBuilder(client)
+export const urlFor = (source: Parameters<typeof builder.image>[0]) => builder.image(source)
