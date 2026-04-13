@@ -1,0 +1,117 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  border-top: 2px solid var(--black);
+  padding-top: var(--space-4);
+  gap: var(--space-3);
+}
+
+.featured {
+  border-top: none;
+  padding-top: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12);
+  align-items: start;
+}
+
+.imageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3/2;
+  overflow: hidden;
+  background: var(--faint);
+  display: block;
+}
+
+.featured .imageWrap {
+  aspect-ratio: 4/3;
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 0.6s var(--ease);
+}
+
+.imageWrap:hover .image {
+  transform: scale(1.03);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.featured .body {
+  justify-content: center;
+  padding: var(--space-4) 0;
+}
+
+.category {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: var(--text-2xl);
+  font-weight: 400;
+  line-height: var(--leading-snug);
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  transition: color 0.15s;
+}
+
+.title:hover {
+  color: var(--orange);
+}
+
+.featured .title {
+  font-size: var(--text-4xl);
+  line-height: var(--leading-tight);
+  letter-spacing: -0.02em;
+}
+
+.excerpt {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: 300;
+  line-height: var(--leading-body);
+  color: var(--muted);
+  max-width: var(--measure);
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-top: var(--space-2);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--faint);
+}
+
+.author {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.06em;
+  color: var(--ink);
+}
+
+.dot {
+  color: var(--stone);
+  font-size: var(--text-xs);
+}
+
+@media (max-width: 768px) {
+  .featured {
+    grid-template-columns: 1fr;
+  }
+  .featured .title {
+    font-size: var(--text-3xl);
+  }
+}

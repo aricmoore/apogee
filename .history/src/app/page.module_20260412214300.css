@@ -1,0 +1,100 @@
+.page {
+  padding-bottom: var(--space-24);
+}
+
+.featuredCta {
+  display: flex;
+  justify-content: center;
+  padding: var(--space-8) 0 var(--space-10);
+  background: var(--black);
+  border-bottom: 1px solid #1e1e1e;
+  margin-bottom: var(--space-12);
+}
+
+.featuredCtaLink {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--amber);
+  position: relative;
+  padding-bottom: var(--space-2);
+}
+
+/* Static underline */
+.featuredCtaLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background: var(--amber-dim);
+}
+
+/* Shine — triggers on hover */
+.featuredCtaLink::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -100%;
+  width: 100%;
+  height: 1.5px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    var(--amber-light) 40%,
+    #FFD97A 50%,
+    var(--amber-light) 60%,
+    transparent 100%
+  );
+  opacity: 0;
+}
+
+.featuredCtaLink:hover::before {
+  animation: shine 0.7s ease-out forwards;
+}
+
+.featuredCtaLink:hover { color: var(--amber-light); }
+.featuredCtaLink:hover::after { background: var(--amber); }
+
+@keyframes shine {
+  0%   { left: -100%; opacity: 1; }
+  100% { left: 100%;  opacity: 0; }
+}
+
+.section {
+  padding-top: var(--space-4);
+}
+
+.sectionLabel {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  letter-spacing: 0.16em;
+  color: var(--ink);
+  display: block;
+  margin-bottom: var(--space-8);
+  padding-bottom: var(--space-3);
+  border-bottom: 2px solid var(--black);
+  position: relative;
+}
+
+.sectionLabel::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: var(--amber);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-10);
+}
+
+@media (max-width: 960px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .grid { grid-template-columns: 1fr; } }

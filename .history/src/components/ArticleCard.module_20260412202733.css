@@ -1,0 +1,120 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+}
+
+.imageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3/2;
+  overflow: hidden;
+  background: var(--black);
+  display: block;
+  flex-shrink: 0;
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 0.7s var(--ease), opacity 0.3s;
+  opacity: 0.9;
+}
+
+.imageWrap:hover .image {
+  transform: scale(1.04);
+  opacity: 1;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-5) var(--space-5) var(--space-6);
+  background: var(--white);
+  border: 1px solid var(--faint);
+  border-top: none;
+  flex: 1;
+}
+
+.category {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+
+.titleLink { display: block; }
+
+.title {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  line-height: 1.0;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--ink);
+  transition: color 0.15s;
+}
+
+.titleLink:hover .title { color: var(--amber); }
+
+.excerpt {
+  font-family: var(--font-serif);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--faint);
+  margin-top: auto;
+  flex-wrap: wrap;
+}
+
+.author {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.dot   { color: var(--stone); font-size: 0.68rem; }
+
+.date {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.readMore {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-top: var(--space-1);
+  transition: letter-spacing 0.2s var(--ease);
+  display: inline-block;
+}
+
+.readMore:hover { letter-spacing: 0.18em; }
+
+/* Remove featured styles — FeaturedHero replaces this */
+.featured { display: none; }
+
+@media (max-width: 560px) {
+  .title { font-size: 1.5rem; }
+}

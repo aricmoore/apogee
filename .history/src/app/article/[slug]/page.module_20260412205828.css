@@ -1,0 +1,210 @@
+.page {
+  padding-bottom: var(--space-24);
+}
+
+/* Hero section */
+.heroSection {
+  position: relative;
+  min-height: 70vh;
+  background: var(--black);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-bottom: var(--space-16);
+  overflow: hidden;
+}
+
+.heroImageWrap {
+  position: absolute;
+  inset: 0;
+}
+
+.heroImage {
+  object-fit: cover;
+  object-position: center top;
+  opacity: 0.45;
+}
+
+/* Dark at top fading to white at bottom — inverted fade */
+.heroGradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(13, 13, 13, 0.15) 0%,
+    rgba(13, 13, 13, 0.4) 30%,
+    rgba(13, 13, 13, 0.75) 60%,
+    rgba(250, 250, 247, 0.92) 88%,
+    var(--bg) 100%
+  );
+}
+
+/* Breadcrumbs */
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-6) 0 var(--space-4);
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.crumb {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(250, 250, 247, 0.5);
+  transition: color 0.15s;
+}
+
+.crumb:hover { color: var(--amber); }
+
+.crumbSep {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: rgba(250, 250, 247, 0.25);
+}
+
+.crumbCurrent {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(250, 250, 247, 0.7);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 280px;
+}
+
+/* Header */
+.header {
+  position: relative;
+  z-index: 1;
+  padding: var(--space-4) 0 var(--space-16);
+  max-width: 900px;
+}
+
+.category {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--amber);
+  display: inline-block;
+  border: 1px solid var(--amber-dim);
+  padding: var(--space-1) var(--space-4);
+  margin-bottom: var(--space-5);
+  background: rgba(13, 13, 13, 0.4);
+}
+
+/* Title: white at top fading to black at bottom */
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 7vw, 6.5rem);
+  line-height: 0.95;
+  letter-spacing: 0.03em;
+  margin-bottom: var(--space-8);
+  background: linear-gradient(
+    to bottom,
+    #FFFFFF 0%,
+    #FFFFFF 40%,
+    #1A1A1A 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.author {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.dot { color: var(--amber); }
+
+.date {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+/* Body */
+.bodyWrap {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.body {
+  font-family: var(--font-serif);
+  font-size: var(--text-lg);
+  font-weight: 400;
+  line-height: 1.78;
+  color: var(--ink);
+}
+
+.body p { margin-bottom: var(--space-6); }
+
+.body h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: var(--space-12) 0 var(--space-4);
+  color: var(--black);
+}
+
+.body strong { font-weight: 500; }
+.body em { font-style: italic; }
+.body a {
+  color: var(--amber);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Tags */
+.tags {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  margin-top: var(--space-12);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--faint);
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border: 1px solid var(--faint);
+  padding: var(--space-2) var(--space-4);
+  transition: border-color 0.15s, color 0.15s;
+  display: inline-block;
+}
+
+.tag:hover {
+  border-color: var(--amber);
+  color: var(--amber);
+}
+
+@media (max-width: 768px) {
+  .heroSection { min-height: 55vh; }
+  .title { font-size: clamp(2.2rem, 9vw, 4rem); }
+}

@@ -1,0 +1,55 @@
+.featuredCta {
+  display: flex;
+  justify-content: center;
+  padding: var(--space-8) 0 var(--space-12);
+  background: var(--black);
+  border-bottom: 1px solid #1e1e1e;
+  margin-bottom: var(--space-12);
+}
+
+.featuredCtaLink {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--white);
+  position: relative;
+  padding-bottom: var(--space-2);
+}
+
+.featuredCtaLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background: var(--amber-dim);
+}
+
+.featuredCtaLink::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -100%;
+  width: 100%;
+  height: 1.5px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    var(--amber-light) 40%,
+    #FFD97A 50%,
+    var(--amber-light) 60%,
+    transparent 100%
+  );
+  animation: shine 1.2s ease-out 1.4s forwards;
+}
+
+@keyframes shine {
+  0%   { left: -100%; opacity: 1; }
+  100% { left: 100%;  opacity: 0; }
+}
+
+.featuredCtaLink:hover { color: var(--amber-light); }
+.featuredCtaLink:hover::after { background: var(--amber); }

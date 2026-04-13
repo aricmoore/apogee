@@ -1,0 +1,116 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--white);
+  border-bottom: 1px solid var(--black);
+}
+
+.top {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  min-height: 52px;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--space-8);
+}
+
+.wordmark {
+  display: flex;
+  align-items: center;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--black);
+  padding-right: var(--space-8);
+  border-right: 1px solid var(--faint);
+  transition: color 0.15s;
+}
+
+.wordmark:hover { color: var(--orange); }
+
+.links {
+  display: flex;
+  align-items: stretch;
+}
+
+.navItem {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 0 var(--space-5);
+  border-left: 1px solid var(--faint);
+  background: none;
+  transition: color 0.15s;
+  white-space: nowrap;
+}
+
+.link:hover { color: var(--orange); }
+
+.caret {
+  font-size: 0.6rem;
+  margin-top: 1px;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 180px;
+  background: var(--white);
+  border: 1px solid var(--black);
+  border-top: 2px solid var(--orange);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdownItem {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--faint);
+  transition: background 0.12s, color 0.12s;
+}
+
+.dropdownItem:last-child { border-bottom: none; }
+.dropdownItem:hover {
+  background: var(--orange);
+  color: var(--white);
+}
+
+.donate {
+  display: flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white);
+  background: var(--orange);
+  padding: 0 var(--space-6);
+  border-left: 1px solid var(--black);
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+
+.donate:hover { background: var(--black); }

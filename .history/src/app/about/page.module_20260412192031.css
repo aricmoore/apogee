@@ -1,0 +1,82 @@
+.page {
+  padding: var(--space-16) 0 var(--space-24);
+}
+
+.header {
+  max-width: 760px;
+  margin: 0 auto var(--space-12);
+  text-align: center;
+  padding-bottom: var(--space-12);
+  border-bottom: 1px solid var(--faint);
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--amber);
+  display: block;
+  margin-bottom: var(--space-4);
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: var(--text-4xl);
+  font-weight: 400;
+  line-height: var(--leading-tight);
+  letter-spacing: -0.02em;
+  color: var(--black);
+}
+
+.body {
+  max-width: 620px;
+  margin: 0 auto var(--space-16);
+  font-family: var(--font-serif);
+  font-size: var(--text-lg);
+  line-height: 1.75;
+  color: var(--ink);
+}
+
+.body p {
+  margin-bottom: var(--space-6);
+}
+
+.stack {
+  max-width: 620px;
+  margin: 0 auto;
+  padding-top: var(--space-10);
+  border-top: 1px solid var(--faint);
+}
+
+.stackLabel {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: block;
+  margin-bottom: var(--space-6);
+}
+
+.stackGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.stackItem {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  border: 1px solid var(--faint);
+  padding: var(--space-2) var(--space-4);
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.stackItem:hover {
+  border-color: var(--amber);
+  color: var(--amber);
+}
