@@ -32,6 +32,7 @@ export default function EventsPage() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
@@ -48,10 +49,8 @@ export default function EventsPage() {
     .filter(e => tab === 'upcoming' ? new Date(e.date) >= now : new Date(e.date) < now)
     .filter(e => category === 'All' || e.category === category)
 
-  const featured = category === 'All' ? filtered.find(e => e.featured) : undefined
-  const rest = category === 'All'
-    ? filtered.filter(e => !e.featured)
-    : filtered
+  const featured = filtered.find(e => e.featured)
+  const rest = filtered.filter(e => !e.featured)
 
   return (
     <div className={styles.page}>
@@ -70,6 +69,7 @@ export default function EventsPage() {
         <div className="container">
           <div className={styles.filters}>
 
+            {/* Upcoming / Past toggle */}
             <div className={styles.tabGroup}>
               <button
                 className={`${styles.tab} ${tab === 'upcoming' ? styles.tabActive : ''}`}
@@ -85,12 +85,16 @@ export default function EventsPage() {
               </button>
             </div>
 
+            {/* Category dropdown */}
             <div className={styles.filterDropdownWrap} ref={dropdownRef}>
               <button
                 className={`${styles.filterBtn} ${category !== 'All' ? styles.filterBtnActive : ''}`}
                 onClick={() => setDropdownOpen(o => !o)}
               >
-                {category === 'All' ? 'Filter' : category}
+                <span className={styles.filterBtnLabel}>
+                  {category === 'All' ? 'Filter' : category}
+                  {category !== 'All' && <span className={styles.filterActiveDot} />}
+                </span>
                 <span className={`${styles.caret} ${dropdownOpen ? styles.caretOpen : ''}`}>▾</span>
               </button>
 

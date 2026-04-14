@@ -216,12 +216,6 @@
 }
 .overlayLinkAtlas:hover { color: #93c5fd; }
 
-/* Scale the SVG icon inside the overlay link to match the 3rem text */
-.overlayLinkAtlas svg {
-  width: 2rem;
-  height: 2.4rem;
-}
-
 /* Launch Atlas desktop nav link — matches .link height and border pattern */
 .launchAtlasLink {
   display: flex;

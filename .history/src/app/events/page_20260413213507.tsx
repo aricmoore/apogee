@@ -11,9 +11,7 @@ export default function EventsPage() {
   const [events, setEvents] = useState<Event[]>([])
   const [tab, setTab] = useState<'upcoming' | 'past'>('upcoming')
   const [category, setCategory] = useState('All')
-  const [dropdownOpen, setDropdownOpen] = useState(false)
   const heroRef = useRef<HTMLDivElement>(null)
-  const dropdownRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     getAllEvents().then(setEvents)
@@ -32,26 +30,14 @@ export default function EventsPage() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  useEffect(() => {
-    const handleClick = (e: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setDropdownOpen(false)
-      }
-    }
-    document.addEventListener('mousedown', handleClick)
-    return () => document.removeEventListener('mousedown', handleClick)
-  }, [])
-
   const now = new Date()
 
   const filtered = events
     .filter(e => tab === 'upcoming' ? new Date(e.date) >= now : new Date(e.date) < now)
     .filter(e => category === 'All' || e.category === category)
 
-  const featured = category === 'All' ? filtered.find(e => e.featured) : undefined
-  const rest = category === 'All'
-    ? filtered.filter(e => !e.featured)
-    : filtered
+  const featured = filtered.find(e => e.featured)
+  const rest = filtered.filter(e => !e.featured)
 
   return (
     <div className={styles.page}>
@@ -59,9 +45,11 @@ export default function EventsPage() {
       <div className={styles.hero} ref={heroRef}>
         <div className="container">
           <div className={styles.heroInner}>
-            <span className={styles.heroLabel}>Apogee</span>
-            <h1 className={styles.heroTitle}>Events</h1>
-            <p className={styles.heroSub}>Where the conversation continues after dark.</p>
+            <div className={styles.heroText}>
+              <span className={styles.heroLabel}>Apogee</span>
+              <h1 className={styles.heroTitle}>Events</h1>
+              <p className={styles.heroSub}>Where the conversation continues after dark.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -69,7 +57,6 @@ export default function EventsPage() {
       <div className={styles.filtersWrap}>
         <div className="container">
           <div className={styles.filters}>
-
             <div className={styles.tabGroup}>
               <button
                 className={`${styles.tab} ${tab === 'upcoming' ? styles.tabActive : ''}`}
@@ -84,31 +71,17 @@ export default function EventsPage() {
                 Past
               </button>
             </div>
-
-            <div className={styles.filterDropdownWrap} ref={dropdownRef}>
-              <button
-                className={`${styles.filterBtn} ${category !== 'All' ? styles.filterBtnActive : ''}`}
-                onClick={() => setDropdownOpen(o => !o)}
-              >
-                {category === 'All' ? 'Filter' : category}
-                <span className={`${styles.caret} ${dropdownOpen ? styles.caretOpen : ''}`}>▾</span>
-              </button>
-
-              {dropdownOpen && (
-                <div className={styles.dropdown}>
-                  {CATEGORIES.map(c => (
-                    <button
-                      key={c}
-                      className={`${styles.dropdownItem} ${category === c ? styles.dropdownItemActive : ''}`}
-                      onClick={() => { setCategory(c); setDropdownOpen(false) }}
-                    >
-                      {c}
-                    </button>
-                  ))}
-                </div>
-              )}
+            <div className={styles.categoryGroup}>
+              {CATEGORIES.map(c => (
+                <button
+                  key={c}
+                  className={`${styles.catBtn} ${category === c ? styles.catBtnActive : ''}`}
+                  onClick={() => setCategory(c)}
+                >
+                  {c}
+                </button>
+              ))}
             </div>
-
           </div>
         </div>
       </div>

@@ -181,7 +181,6 @@
   flex-direction: column;
   padding: var(--space-8);
   border-top: 1px solid #1e1e1e;
-  overflow-y: auto;
 }
 
 .overlayLinks {
@@ -201,46 +200,34 @@
 
 .overlayLink:hover { color: var(--amber); }
 
-.overlayLinkAtlas {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-family: var(--font-display);
-  font-size: 3rem;
-  letter-spacing: 0.06em;
-  color: #60a5fa;
-  padding: var(--space-5) 0;
-  border-bottom: 1px solid #1e1e1e;
-  transition: color 0.15s;
-  text-decoration: none;
-}
-.overlayLinkAtlas:hover { color: #93c5fd; }
-
-/* Scale the SVG icon inside the overlay link to match the 3rem text */
-.overlayLinkAtlas svg {
-  width: 2rem;
-  height: 2.4rem;
-}
-
-/* Launch Atlas desktop nav link — matches .link height and border pattern */
+/* Launch Atlas nav link */
 .launchAtlasLink {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-family: var(--font-mono);
-  font-size: 0.76rem;
+  font-family: var(--font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.75rem;
   font-weight: 500;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #60a5fa;
   text-decoration: none;
-  opacity: 0.85;
+  opacity: 0.8;
   transition: opacity 0.15s;
   white-space: nowrap;
-  padding: 0 var(--space-6);
-  border-left: 1px solid #2a2a2a;
+  border-left: 1px solid rgba(255, 255, 255, 0.15);
+  padding-left: 1.5rem;
+  margin-left: 0.25rem;
 }
 .launchAtlasLink:hover { opacity: 1; }
+
+/* Launch Atlas in mobile overlay */
+.overlayLaunchAtlas {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #60a5fa;
+}
 
 @media (max-width: 768px) {
   .links { display: none; }
