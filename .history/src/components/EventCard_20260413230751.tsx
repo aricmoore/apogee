@@ -45,22 +45,22 @@ export default function EventCard({ event, featured = false }: Props) {
           )}
           <div className={styles.gradient} />
 
-          {/* Non-featured: static overlay with category + title */}
-          {!featured && (
-            <div className={styles.staticOverlay}>
-              <div className={styles.overlayTop}>
-                {event.category && (
-                  <span className={styles.category}>{event.category}</span>
-                )}
-                {event.soldOut && (
-                  <span className={styles.soldOut}>Sold Out</span>
-                )}
-              </div>
-              <h2 className={styles.title}>{event.title.toUpperCase()}</h2>
+          {/* Static overlay — always visible */}
+          <div className={styles.staticOverlay}>
+            <div className={styles.overlayTop}>
+              {event.category && (
+                <span className={styles.category}>
+                  {featured ? `Featured in ${event.category}` : event.category}
+                </span>
+              )}
+              {event.soldOut && (
+                <span className={styles.soldOut}>Sold Out</span>
+              )}
             </div>
-          )}
+            <h2 className={styles.title}>{event.title.toUpperCase()}</h2>
+          </div>
 
-          {/* Non-featured: hover panel */}
+          {/* Hover panel — slides up */}
           {!featured && (
             <div className={styles.hoverPanel}>
               <div className={styles.hoverMeta}>
@@ -85,47 +85,31 @@ export default function EventCard({ event, featured = false }: Props) {
             </div>
           )}
 
-          {/* Featured: full overlay with title + bar */}
+          {/* Featured bottom bar */}
           {featured && (
-            <div className={styles.featuredOverlay}>
-              <div className={styles.featuredTop}>
-                {event.category && (
-                  <span className={styles.category}>
-                    Featured in {event.category}
-                  </span>
-                )}
-              </div>
-              <div className={styles.featuredBottom}>
-                <h2 className={styles.featuredTitle}>{event.title.toUpperCase()}</h2>
-                <div className={styles.featuredBar}>
-                  <div className={styles.featuredMeta}>
-                    <div className={styles.dateBlock}>
-                      <span className={styles.dateDay}>{day}</span>
-                      <div className={styles.dateMonthYear}>
-                        <span className={styles.dateMonth}>{month}</span>
-                        <span className={styles.dateYear}>{year}</span>
-                      </div>
-                    </div>
-                    <div className={styles.hoverRight}>
-                      {event.venue && <span className={styles.venue}>{event.venue}</span>}
-                      <span className={styles.time}>{weekday} · {time}</span>
-                    </div>
+            <div className={styles.featuredBar}>
+              <div className={styles.featuredMeta}>
+                <div className={styles.dateBlock}>
+                  <span className={styles.dateDay}>{day}</span>
+                  <div className={styles.dateMonthYear}>
+                    <span className={styles.dateMonth}>{month}</span>
+                    <span className={styles.dateYear}>{year}</span>
                   </div>
-                  {event.description && (
-                    <p className={styles.description}>{event.description}</p>
-                  )}
-                  {event.externalLink && !event.soldOut && (
-                    <a
-                      href={event.externalLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.register}
-                    >
-                      Register →
-                    </a>
-                  )}
+                </div>
+                <div className={styles.hoverRight}>
+                  {event.venue && <span className={styles.venue}>{event.venue}</span>}
+                  <span className={styles.time}>{weekday} · {time}</span>
                 </div>
               </div>
+              {event.description && (
+                <p className={styles.description}>{event.description}</p>
+              )}
+              <button
+                className={styles.infoBtn}
+                onClick={() => setModalOpen(true)}
+              >
+                Info ↓
+              </button>
             </div>
           )}
         </div>

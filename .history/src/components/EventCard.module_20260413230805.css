@@ -19,7 +19,7 @@
 
 .featured .imageWrap {
   aspect-ratio: 21/9;
-  min-height: 580px;
+  min-height: 560px;
 }
 
 .image {
@@ -50,9 +50,10 @@
     rgba(13, 13, 13, 0.7) 70%,
     rgba(13, 13, 13, 0.97) 100%
   );
+  transition: opacity 0.4s;
 }
 
-/* Non-featured static overlay */
+/* Static overlay — always visible */
 .staticOverlay {
   position: absolute;
   inset: 0;
@@ -93,7 +94,6 @@
   padding: var(--space-1) var(--space-3);
 }
 
-/* Non-featured title */
 .title {
   font-family: var(--font-display);
   font-size: clamp(2rem, 3.5vw, 3rem);
@@ -103,6 +103,10 @@
   transition: color 0.2s;
   align-self: flex-end;
   text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+}
+
+.featured .title {
+  font-size: clamp(3.5rem, 6vw, 6rem);
 }
 
 .card:hover .title { color: var(--amber-light); }
@@ -210,38 +214,14 @@
 
 .infoBtn:hover { background: var(--amber-light); }
 
-/* Featured overlay — full card */
-.featuredOverlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 0;
-}
-
-.featuredTop {
-  padding: var(--space-8) var(--space-10);
-}
-
-.featuredBottom {
-  display: flex;
-  flex-direction: column;
-}
-
-.featuredTitle {
-  font-family: var(--font-display);
-  font-size: clamp(3.5rem, 6vw, 6rem);
-  line-height: 0.92;
-  letter-spacing: 0.03em;
-  color: var(--white);
-  padding: 0 var(--space-10) var(--space-6);
-  text-shadow: 0 2px 30px rgba(0,0,0,0.6);
-}
-
+/* Featured bar */
 .featuredBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
   background: rgba(13, 13, 13, 0.94);
-  padding: var(--space-6) var(--space-10);
+  padding: var(--space-8) var(--space-10);
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
@@ -263,29 +243,12 @@
   max-width: 65ch;
 }
 
-.register {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--black);
-  background: var(--amber);
-  padding: var(--space-2) var(--space-6);
-  align-self: flex-start;
-  transition: background 0.15s;
-  display: inline-block;
-}
-
-.register:hover { background: var(--amber-light); }
-
 @media (max-width: 640px) {
   .featured .imageWrap {
     aspect-ratio: 4/3;
     min-height: 0;
   }
-  .featuredTitle { font-size: clamp(2.5rem, 10vw, 4rem); padding: 0 var(--space-5) var(--space-4); }
-  .featuredTop { padding: var(--space-5) var(--space-5); }
-  .featuredBar { padding: var(--space-5); }
+  .featured .title { font-size: clamp(2.5rem, 10vw, 4rem); }
   .description { display: none; }
+  .featuredBar { padding: var(--space-5); }
 }
