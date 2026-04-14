@@ -21,16 +21,6 @@ export default function EventModal({ event, onClose }: Props) {
 		? endD.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true })
 		: null
 
-	const isSameDay = endD
-  ? d.toDateString() === endD.toDateString()
-  : true
-
-	const endDateStr = endD && !isSameDay
-		? endD.toLocaleDateString('en-US', {
-				weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
-			})
-		: null
-
   useEffect(() => {
     document.body.style.overflow = 'hidden'
     const handleKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
@@ -75,18 +65,15 @@ export default function EventModal({ event, onClose }: Props) {
 
           <div className={styles.details}>
             <div className={styles.detailRow}>
-						<span className={styles.detailLabel}>Date</span>
-						<span className={styles.detailValue}>
-							{fullDate}{endDateStr ? ` — ${endDateStr}` : ''}
-						</span>
-					</div>
-					<div className={styles.detailRow}>
-						<span className={styles.detailLabel}>Time</span>
-						<span className={styles.detailValue}>
-							{time}{endTime && isSameDay ? ` — ${endTime}` : ''}
-							{!isSameDay && endTime ? ` until ${endTime} on final day` : ''}
-						</span>
-					</div>
+              <span className={styles.detailLabel}>Date</span>
+              <span className={styles.detailValue}>{fullDate}</span>
+            </div>
+            <div className={styles.detailRow}>
+              <span className={styles.detailLabel}>Time</span>
+              <span className={styles.detailValue}>
+								{time}{endTime ? ` — ${endTime}` : ''}
+							</span>
+            </div>
             {event.venue && (
               <div className={styles.detailRow}>
                 <span className={styles.detailLabel}>Venue</span>

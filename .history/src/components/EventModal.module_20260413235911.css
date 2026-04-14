@@ -37,7 +37,6 @@
   min-height: 280px;
   overflow: hidden;
   background: #111;
-  flex-shrink: 0;
 }
 
 .image {
