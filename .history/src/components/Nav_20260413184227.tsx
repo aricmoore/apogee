@@ -150,11 +150,10 @@ export default function Nav() {
             {/* Launch Atlas in mobile overlay */}
             <a
               href={LAUNCH_ATLAS_URL}
-							target="_blank"
-							rel="noopener noreferrer"
-							className={styles.overlayLink}
-							onClick={() => setMenuOpen(false)}
-							style={{ color: '#60a5fa', display: 'flex', alignItems: 'center', gap: '8px' }}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${styles.overlayLink} ${styles.overlayLaunchAtlas}`}
+              onClick={() => setMenuOpen(false)}
             >
               <LaunchAtlasIcon />
               <span>Launch Atlas</span>
