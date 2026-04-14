@@ -120,7 +120,7 @@ export default function EventModal({ event, onClose }: Props) {
             {event.soldOut ? (
               <span className={styles.soldOut}>Sold Out</span>
             ) : event.externalLink && (
-              <a
+              
                 href={event.externalLink}
                 target="_blank"
                 rel="noopener noreferrer"
