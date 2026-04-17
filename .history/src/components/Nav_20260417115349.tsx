@@ -108,13 +108,13 @@ export default function Nav() {
           ))}
 
           {/* Launch Atlas tool link */}
-          <a
+          <Link
 						href={LAUNCH_ATLAS_URL}
 						className={styles.launchAtlasLink}
 					>
 						<LaunchAtlasIcon />
 						<span>Launch Atlas</span>
-					</a>
+					</Link>
 
           <Link href="/studio" className={styles.studio}>Studio ↗</Link>
         </nav>
@@ -146,7 +146,7 @@ export default function Nav() {
             ))}
 
             {/* Launch Atlas in mobile overlay */}
-            <a
+            <Link
 							href={LAUNCH_ATLAS_URL}
 							className={styles.overlayLink}
 							onClick={() => setMenuOpen(false)}
@@ -154,7 +154,7 @@ export default function Nav() {
 						>
 							<LaunchAtlasIcon />
 							<span>Launch Atlas</span>
-						</a>
+						</Link>
 
             <Link
               href="/studio"
